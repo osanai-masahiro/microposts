@@ -20,6 +20,8 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
+ production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
