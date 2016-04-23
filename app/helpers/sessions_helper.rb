@@ -11,3 +11,7 @@ module SessionsHelper
     session[:forwarding_url] = request.url if request.get?
   end
 end
+
+def log_in(user)
+    session[:user_id] = user.id
+end

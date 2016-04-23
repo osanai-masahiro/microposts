@@ -32,10 +32,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user #ユーザーページ
+      log_in @user
+      redirect_to @user
     else
       render "new"
     end
+  end
+  
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
   end
 
 

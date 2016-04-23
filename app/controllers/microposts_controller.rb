@@ -4,11 +4,20 @@ class MicropostsController < ApplicationController
     def create
         @micropost = current_user.microposts.build(micropost_params)
         if @micropost.save
-            flash[:sucess] = "Micropost created!"
+            flash[:success] = "Micropost created!"
             redirect_to root_url
         else
             render "static_pages/home"
         end
+    end
+    
+    
+    def delete
+        @micropost = current_user.microposts.find_by(id: prams[:id])
+        return redirect_to root_url if @micropost.nil?
+        @micropost.destroy
+        flash[:success] = "Micropost was deleted "
+        redirect_to request.referrer || root_url
     end
     
     private
