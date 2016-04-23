@@ -7,6 +7,6 @@
   </span>
   
   <% if current_user == micropost.user %>
-      <%= link_to, "delete" , micropost_path(micropost),method: :delete ,data: {confirm: "You  sure?"} %>
+      <%= link_to "delete" , micropost_path(micropost),method: :delete ,data: {confirm: "You  sure?"} %>
   <% end %>
 </li>
