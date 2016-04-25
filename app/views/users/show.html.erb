@@ -21,6 +21,10 @@
 </br>
 <button class="btn btn-default"><%= link_to "Show your followers",  followers_user_path %></button>
 <% end %>
+</br>
+フォロー数: <%= @user.following_users.count %>
+</br>
+フォロワー数: <%= @user.follower_users.count %>
 
 
 
