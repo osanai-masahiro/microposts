@@ -10,17 +10,26 @@
 
 <% if current_user.id != @user.id %>
 </br>
+</br>
+</br>
+</br>
+</br>
 <button class="btn btn-default"><%= link_to "Show following user", followings_user_path(@user) %></button>
 </br>
 </br>
 <button class="btn btn-default"><%= link_to "Show followers",  followers_user_path(@user) %></button>
 <% else %>
-
+</br>
+</br>
+</br>
+</br>
+</br>
 <button class="btn btn-default"><%= link_to "Show your following user", followings_user_path %></button>
 </br>
 </br>
 <button class="btn btn-default"><%= link_to "Show your followers",  followers_user_path %></button>
 <% end %>
+</br>
 </br>
 フォロー数: <%= @user.following_users.count %>
 </br>
