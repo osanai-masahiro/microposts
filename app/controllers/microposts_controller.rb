@@ -12,6 +12,18 @@ class MicropostsController < ApplicationController
         end
     end
     
+    def retweet
+        @micropost = Micropost.find_by(id: params[:id])
+        @retweet = current_user.microposts.build(content: @micropost.content)
+        if @retweet.save
+            flash[:success] = "Micropost was retweeted!"
+            redirect_to root_url
+        else
+            @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc) # この行を追加
+            render "static_pages/home"
+        end
+    end
+    
     
     def destroy
         @micropost = current_user.microposts.find_by(id: params[:id])
@@ -25,4 +37,7 @@ class MicropostsController < ApplicationController
     def micropost_params
         params.require(:micropost).permit(:content)
     end
-end 
+    
+    
+end
+
