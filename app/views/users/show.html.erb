@@ -8,9 +8,14 @@
         
 <%= @user.name %>
 
+
+
       </h1>
     </section>
   </aside>
+  <br>
+  
+  
   <div class="col-md-8">
     
 <%= render 'follow_form' if logged_in? %>
@@ -26,8 +31,17 @@
 <%= render @microposts %>
 
       </ol>
-    
+
 <% end %>
 
+<br>
+
+<% if current_user.id == @user.id %>
+
+<button class="btn btn-default"><%= link_to "Show your following user", followings_user_path %></button>
+<br>
+<button class="btn btn-default"><%= link_to "Show your followers",  followers_user_path %></button>
+
+<% end %>
   </div>
 </div>

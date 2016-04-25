@@ -1,9 +1,21 @@
 class UsersController < ApplicationController
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[id])
   end
   
+  def followings
+    logged_in_user
+    @user = User.find(params[:id])
+    @followings = @user.following_users
+  end
+  
+  def followers
+    logged_in_user
+    @user = User.find(params[:id])
+    @follower = @user.follower_users
+  end
+
   def edit
     if logged_in? 
      @user = User.find(params[:id])
@@ -37,6 +49,10 @@ class UsersController < ApplicationController
     else
       render "new"
     end
+  end
+  
+  def following
+    current_user.following
   end
   
   def show

@@ -1,0 +1,28 @@
+<h1>Your follower</h1>
+<div class = "container">
+<% @follower.each do |follow| %>
+            <div class="row">
+                  <aside class="col-md-4">
+                    <section class="user_info">
+                          <h1>
+        
+                                <%= gravatar_for follow %>
+                                <%= follow.name %>
+                                </br>
+                                <%= follow.email %>
+                                </br>
+                                <%= follow.area %>
+                                </br>
+                                <%= link_to "Show profile", follow %>
+
+                          </h1>
+                    </section>
+                   </aside>
+            </div>
+            @count ++
+<% end %>
+
+<% if @count.nil? %>
+<h1>No one  follow you!!!</h1>
+<% end %>
+</div>
