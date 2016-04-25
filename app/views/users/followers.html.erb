@@ -1,4 +1,4 @@
-<h1>Your follower</h1>
+<h1>Follower users</h1>
 <div class = "container">
 <% @follower.each do |follow| %>
             <div class="row">
@@ -19,10 +19,5 @@
                     </section>
                    </aside>
             </div>
-            @count ++
-<% end %>
-
-<% if @count.nil? %>
-<h1>No one  follow you!!!</h1>
 <% end %>
 </div>
