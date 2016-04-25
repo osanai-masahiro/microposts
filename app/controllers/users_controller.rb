@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+ before_action :valid_user, only: [:edit,:update]
+   
   def show
     @user = User.find(params[id])
   end
@@ -17,11 +18,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if logged_in? 
-     @user = User.find(params[:id])
-    else
-     logged_in_user
-    end
   end
   
   def update 
@@ -65,6 +61,14 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name , :email , :area,  :password , :password_confirmation)
+  end
+  
+  def valid_user
+     @user = User.find(params[:id])
+     if @user != current_user
+      flash[:danger] = "You can't edit other user's profile!!!!!!"
+      redirect_to root_path 
+     end
   end
   
 end
