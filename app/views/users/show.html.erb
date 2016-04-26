@@ -14,20 +14,20 @@
 </br>
 </br>
 </br>
-<button class="btn btn-default"><%= link_to "Show following user", followings_user_path(@user) %></button>
+<%= link_to "Show following user", followings_user_path(@user) %>
 </br>
 </br>
-<button class="btn btn-default"><%= link_to "Show followers",  followers_user_path(@user) %></button>
+<%= link_to "Show followers",  followers_user_path(@user) %>
 <% else %>
 </br>
 </br>
 </br>
 </br>
 </br>
-<button class="btn btn-default"><%= link_to "Show your following user", followings_user_path %></button>
+<%= link_to "Show your following user", followings_user_path %>
 </br>
 </br>
-<button class="btn btn-default"><%= link_to "Show your followers",  followers_user_path %></button>
+<%= link_to "Show your followers",  followers_user_path %>
 <% end %>
 </br>
 </br>
